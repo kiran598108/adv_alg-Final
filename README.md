@@ -1,5 +1,4 @@
-#Purpose of the Code
-The code is designed to compute the SHA-256 hash of the contents of a file. SHA-256 is a cryptographic hash function that takes an input (in this case, the contents of a file) and produces a fixed-size (256-bit) hash value. This hash value is unique to the input data, meaning even a small change in the input will produce a completely different hash.
+Purpose of the Code - The code is designed to compute the SHA-256 hash of the contents of a file. SHA-256 is a cryptographic hash function that takes an input (in this case, the contents of a file) and produces a fixed-size (256-bit) hash value. This hash value is unique to the input data, meaning even a small change in the input will produce a completely different hash.
 
 #How the Code Works
 1. Read the File:
