@@ -20,7 +20,7 @@ const uint32_t K[64] =
     0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
     0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
-//stage -3
+
 // right rotation Function.
 
 inline uint32_t rightrotr(uint32_t x, uint32_t n) 
@@ -28,7 +28,6 @@ inline uint32_t rightrotr(uint32_t x, uint32_t n)
     return (x >> n) | (x << (32 - n));
 }
 
-//stage - 4
 // SHA-256 compression function
 
 void sha256_transform(uint32_t state[8], const uint8_t data[64]) 
