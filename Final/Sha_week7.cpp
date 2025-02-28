@@ -103,6 +103,7 @@ string sha256(const string& input)
         0x64f98fa7, 
         0xbefa4fa4
     };
+     
 
     uint64_t bitlen = input.size() * 8;
     uint64_t bitlen_be = __builtin_bswap64(bitlen);
