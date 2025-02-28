@@ -90,7 +90,9 @@ void sha256_transform(uint32_t state[8], const uint8_t data[64])
 
 // SHA-256 hashing function
 
-string sha256(const string& input)
+
+//Intialization
+string sha256(const string & input)
  {
     uint32_t state[8] =
      {
@@ -103,29 +105,38 @@ string sha256(const string& input)
         0x1f83d9ab, 
         0x5be0cd19  
     };
-     
 
+
+//preprocessing
+     
+//calculate the length of the input
     uint64_t bitlen = input.size() * 8;
     uint64_t bitlen_be = __builtin_bswap64(bitlen);
 
+
+//Prepare the Data buffer
     vector<uint8_t> data(input.begin(), input.end());
     data.push_back(0x80);
 
+
+//loop uses add padding
     while ((data.size() + 8) % 64 != 0)
     {
         data.push_back(0x00);
     }
-
+//loop uses append length
     for (int i = 0; i < 8; ++i) 
     {
         data.push_back((bitlen_be >> (56 - i * 8)) & 0xff);
     }
 
+//processing the data in chuncks(small 64 bytes)
     for (size_t i = 0; i < data.size(); i += 64) 
     {
         sha256_transform(state, &data[i]);
     }
-
+     
+//here we generate final hash 
     stringstream ss;
     for (int i = 0; i < 8; ++i) 
     {
@@ -135,7 +146,7 @@ string sha256(const string& input)
     return ss.str();
 }
 
-// stage - 2 Function to read text from a file
+// Function to read text from a file
 string read_file(const string& filepath)
 {
     ifstream file(filepath);
@@ -148,7 +159,7 @@ string read_file(const string& filepath)
     return content;
 }
 
-//stage -1 
+
 int main() 
 {
     string filepath = "/workspaces/adv_alg-Final/Final/Mark.txt"; 
